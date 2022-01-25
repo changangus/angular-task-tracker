@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Task } from '../Task';
 import { Observable } from 'rxjs';
 
@@ -15,4 +15,8 @@ export class TaskService {
   getTasks(): Observable<Task[]> {
     return this.http.get<Task[]>(this.apiUrl);
   };
+  
+  deleteTask(task: Task): Observable<Task[]> {
+    return this.http.delete<Task[]>(this.apiUrl + '/' + task.id);
+  }
 }
